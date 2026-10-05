@@ -1,0 +1,8 @@
+# OS and sync clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Obsidian config, if this folder is opened as a vault
+.obsidian/
+.trash/

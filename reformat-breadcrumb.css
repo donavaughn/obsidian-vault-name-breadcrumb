@@ -1,0 +1,57 @@
+/* 0. Vault name shown as the root of the breadcrumb.
+      The vault-name-breadcrumb plugin sets this automatically from the vault folder name;
+      the value below is only a fallback for when the plugin is not running.
+*/
+body {
+    --breadcrumb-vault-name: "Vault";
+}
+
+/* 1. Hide the file title entirely from the header bar */
+.view-header-title {
+    display: none !important;
+}
+
+/* 2. Style the parent folder path and ensure it anchors cleanly.
+      The second selector is a stand-in crumb used when Obsidian omits the parent element (root notes). */
+.view-header-title-parent,
+.view-header-title-container:not(:has(.view-header-title-parent))::before {
+    font-size: 01.01rem !important;
+    font-weight: 600 !important;
+    color: var(--text-accent) !important;
+    background-color: var(--background-secondary);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    
+    /* Ensure no remaining margins push it out of alignment */
+    margin: 0 !important; 
+}
+
+/* 2a. Prepend the vault name as the root crumb, followed by a separator */
+.view-header-title-parent::before {
+    content: var(--breadcrumb-vault-name) " / ";
+    white-space: pre;
+}
+
+/* 2b. Notes at the vault root have no parent folders: Obsidian leaves the element empty and hides it,
+       so force it visible and show the vault name alone */
+.view-header-title-parent:empty {
+    display: inline-block !important;
+}
+
+.view-header-title-parent:empty::before {
+    content: var(--breadcrumb-vault-name);
+}
+
+/* 2c. Fallback if Obsidian removes the parent element entirely for root notes */
+.view-header-title-container:not(:has(.view-header-title-parent))::before {
+    content: var(--breadcrumb-vault-name);
+}
+
+/* 3. Force the parent container to align perfectly left */
+.view-header-title-container {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    align-items: center !important;
+    display: flex !important;
+}

@@ -1,0 +1,9 @@
+{
+  "id": "vault-name-breadcrumb",
+  "name": "Vault Name Breadcrumb",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Exposes the vault name as the --breadcrumb-vault-name CSS variable for the reformat-breadcrumb snippet.",
+  "author": "donavaughn",
+  "isDesktopOnly": false
+}
