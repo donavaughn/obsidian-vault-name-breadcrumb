@@ -36,7 +36,14 @@ body {
 /* 2b. Notes at the vault root have no parent folders: Obsidian leaves the element empty and hides it,
        so force it visible and show the vault name alone */
 .view-header-title-parent:empty {
-    display: inline-block !important;
+    display: inline-flex !important;
+}
+
+/* 2d. Some Obsidian versions lay the folder links out as flex items with their own padding,
+       which leaves the vault name riding high. Align everything on the text baseline instead. */
+.view-header-title-parent {
+    display: inline-flex;
+    align-items: baseline !important;
 }
 
 .view-header-title-parent:empty::before {

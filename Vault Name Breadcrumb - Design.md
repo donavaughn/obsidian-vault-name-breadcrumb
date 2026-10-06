@@ -67,8 +67,9 @@ If the plugin is off, the snippet still works and shows the fallback name "Vault
 | 1 | `.view-header-title` | Hides the note title (`display: none`). |
 | 2 | `.view-header-title-parent` | Styles the folder path as one box: accent text, 600 weight, secondary background, 1px border, 4px radius, 3px × 8px padding. |
 | 2a | `.view-header-title-parent::before` | Puts the vault name and a ` / ` separator in front of the folder path. `white-space: pre` keeps the spaces around the slash. |
-| 2b | `.view-header-title-parent:empty` and `:empty::before` | For root notes, Obsidian leaves the path element empty and hides it. This rule forces it visible (`inline-block`) and shows the vault name without a separator. |
+| 2b | `.view-header-title-parent:empty` and `:empty::before` | For root notes, Obsidian leaves the path element empty and hides it. This rule forces it visible (`inline-flex`) and shows the vault name without a separator. |
 | 2c | `.view-header-title-container:not(:has(.view-header-title-parent))::before` | Fallback in case Obsidian leaves the path element out entirely: draws the vault name on the header container, styled the same way as rule 2. |
+| 2d | `.view-header-title-parent` | Lays the path out as `inline-flex` with `align-items: baseline`, so the vault name lines up with the folder links. Without it, on Obsidian versions that render the links as padded flex items (seen on macOS), the vault name sits higher than the folders. |
 | 3 | `.view-header-title-container` | Lines the header content up on the left with flexbox. |
 
 Rules 2b and 2c never apply at the same time: one needs the path element to exist, the other needs it to be missing. That way the vault name can't appear twice.
@@ -177,7 +178,14 @@ body {
 /* 2b. Notes at the vault root have no parent folders: Obsidian leaves the element empty and hides it,
        so force it visible and show the vault name alone */
 .view-header-title-parent:empty {
-    display: inline-block !important;
+    display: inline-flex !important;
+}
+
+/* 2d. Some Obsidian versions lay the folder links out as flex items with their own padding,
+       which leaves the vault name riding high. Align everything on the text baseline instead. */
+.view-header-title-parent {
+    display: inline-flex;
+    align-items: baseline !important;
 }
 
 .view-header-title-parent:empty::before {
