@@ -38,7 +38,7 @@ The documents are written for Obsidian: open the folder as a vault, or copy them
 
 ## Compatibility
 
-Tested on Obsidian desktop (Windows). Mobile is untested. The snippet relies on Obsidian's internal header class names (`view-header-title`, `view-header-title-parent`, `view-header-title-container`), which a future Obsidian update could change.
+Tested on Obsidian desktop for Windows and macOS. Mobile is untested. The snippet relies on Obsidian's internal header class names (`view-header-title`, `view-header-title-parent`, `view-header-title-container`), which a future Obsidian update could change.
 
 ## License
 

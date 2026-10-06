@@ -3,6 +3,7 @@ type: design
 created: 2026-10-05
 author: donavaughn
 version: 1.0.0
+updated: 2026-10-06
 components:
   - reformat-breadcrumb.css
   - vault-name-breadcrumb (plugin)
@@ -116,8 +117,9 @@ A plugin was the only option that is fully automatic. CSS can't read the vault n
 **Risks**
 
 - **Obsidian markup changes.** The snippet depends on Obsidian's internal class names (`view-header-title`, `view-header-title-parent`, `view-header-title-container`). If an Obsidian update renames them, the breadcrumb falls back to Obsidian's default header. The vault notes themselves are not affected.
+- **Layout differences between Obsidian builds.** The header markup is not identical everywhere: on macOS the folder links rendered as padded flex items and pushed the vault name out of line until rule 2d was added. Check a new platform or a major Obsidian update for alignment.
 - **Theme conflicts.** A theme that restyles the header could override parts of the look. The `!important` flags reduce this risk but can't rule it out.
-- **Behavior for root notes.** Rules 2b and 2c rely on how Obsidian renders the header for notes at the vault root. The full setup was confirmed working in Obsidian on 2026-10-05.
+- **Behavior for root notes.** Rules 2b and 2c rely on how Obsidian renders the header for notes at the vault root. The full setup was confirmed working on Windows (2026-10-05) and macOS (2026-10-06).
 
 **Possible enhancements**
 

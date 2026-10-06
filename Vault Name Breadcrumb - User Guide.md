@@ -3,6 +3,7 @@ type: guide
 created: 2026-10-05
 author: donavaughn
 version: 1.0.0
+updated: 2026-10-06
 tags:
   - obsidian
   - css-snippet
@@ -29,7 +30,7 @@ This setup changes the header at the top of each note to show a single breadcrum
 
 ## Requirements
 
-- Obsidian desktop. Mobile has not been tested.
+- Obsidian desktop (tested on Windows and macOS). Mobile has not been tested.
 - Community plugins allowed in the vault (**Settings → Community plugins**, restricted mode off).
 - Two items from this repository:
     - `reformat-breadcrumb.css`, the CSS snippet
@@ -82,7 +83,7 @@ All visual changes are made in `reformat-breadcrumb.css`. Edit the installed cop
 | Name shown when the plugin is off | Rule **0**, `--breadcrumb-vault-name` | `--breadcrumb-vault-name: "Unknown vault";` |
 
 > [!note]
-> The separator in rule 2a only appears after the vault name. The separators between folders come from Obsidian and follow your theme.
+> The separator in rule 2a only appears after the vault name, and it takes the accent color of the breadcrumb text. The separators between folders come from Obsidian and follow your theme, so they may be a different color (often gray).
 
 ## Troubleshooting
 
@@ -92,6 +93,7 @@ All visual changes are made in `reformat-breadcrumb.css`. Edit the installed cop
 | Plugin isn't in the installed list | Obsidian hasn't rescanned the plugins folder, or the folder is in the wrong place | Click refresh, or restart Obsidian. Check that `main.js` and `manifest.json` sit directly in `.obsidian/plugins/vault-name-breadcrumb/`. |
 | Plugin won't stay on | Error while loading | Press **Ctrl+Shift+I**, open the **Console** tab, and look for red errors mentioning `vault-name-breadcrumb`. |
 | Header shows the default title and path | Snippet is off or missing | Turn on `reformat-breadcrumb` under **Settings → Appearance → CSS snippets**. |
+| Vault name sits higher or lower than the folder names | Older copy of the snippet without rule 2d | Copy the current `reformat-breadcrumb.css` into `.obsidian/snippets/` and turn the snippet off and on. |
 | Nothing shows for root notes | An Obsidian update changed the header markup | Inspect the header with **Ctrl+Shift+I** and compare its classes with the selectors in [[Vault Name Breadcrumb - Design#CSS snippet design]]. |
 | Old vault name after renaming the vault | The vault hasn't reopened since the rename | Reload Obsidian. |
 
